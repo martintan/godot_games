@@ -3,15 +3,20 @@ extends Node2D
 onready var scn_slot = preload("res://slot.tscn")
 onready var sudoku_grid = get_node("../sudoku_grid")
 var prev_pos = Vector2(0, 0)
+var test_x = 0
+var test_y = 0
+var test_grid
 
 func _ready():
 	randomize()			# randomize the seed (true randomness)
+	set_process(true)
 	var grid = []
 	init_grid(grid)	# 2d array for the grid (no clutter)
 	# print_grid(grid)
-	populate_grid(0, 0, grid)
-	print_grid(grid)
-	draw_grid(grid)
+	test_grid = grid
+	populate_grid_2()
+	# populate_grid(0, 0, grid)
+	# draw_grid(grid)
 		
 func init_grid(grid):
 	for y in range(9):
@@ -23,14 +28,7 @@ func init_grid(grid):
 
 func populate_grid(y, x, grid):
 	# loop until last index is valid or not empty
-	
 	while (!is_valid(8, 8, grid) or grid[8][8] == 0):
-#		if (grid[y][x] != 0 and is_valid(y, x, grid)):
-#			if (x == 8):
-#				x = 0
-#				y += 1
-#			else: x += 1
-#			populate_grid(y, x, grid)
 		if (grid[y][x] < 9):
 			grid[y][x] += 1
 			if (is_valid(y, x, grid)):
@@ -43,6 +41,36 @@ func populate_grid(y, x, grid):
 			grid[y][x] = 0
 			break
 	return grid
+	
+	
+func populate_grid_2():
+	while (!is_valid(8, 8, test_grid) or test_grid[8][8] == 0):
+		if (test_grid[test_y][test_x] < 9):
+			test_grid[test_y][test_x] += 1
+			if (is_valid(test_y, test_x, test_grid)):
+				var cell = scn_slot.instance()
+				cell.set_pos(prev_pos)
+				sudoku_grid.add_child(cell)
+				cell.set_number(str(test_grid[test_y][test_x]))
+				if (test_x == 8):
+					test_x = 0
+					test_y += 1
+					prev_pos.x = 0
+					prev_pos.y += 74
+				else: 
+					test_x += 1
+					prev_pos.x += 74
+		else: 
+			test_grid[test_y][test_x] = 0
+			if (test_x == 0):
+				test_x = 8
+				test_y -= 1
+			else: 
+				test_x -= 1
+				prev_pos.x -= 74
+			sudoku_grid.remove_child(sudoku_grid.get_child(sudoku_grid.get_child_count()-1))
+		yield(get_tree(), "idle_frame")
+	print_grid(test_grid)
 	
 # check if the number is unique in (region, row, column)
 func is_valid(y, x, grid):

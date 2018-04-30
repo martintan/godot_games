@@ -14,7 +14,7 @@ func get_random_block():
 	
 func get_block(BLOCK_TYPE):
 	return get_child(BLOCK_TYPE).duplicate()
-
+	
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.

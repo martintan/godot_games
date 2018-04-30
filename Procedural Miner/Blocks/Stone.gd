@@ -13,6 +13,7 @@ func attempt_break(break_type):
 		queue_free()
 		pass
 	pass
+	
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

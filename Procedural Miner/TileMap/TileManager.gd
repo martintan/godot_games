@@ -23,9 +23,7 @@ func _ready():
 		block.position = map_to_world(Vector2(start.x, i)) + cell_size/2
 		blocks_holder.add_child(block)
 		block_queue.push_front(block)
-		
 	
-
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

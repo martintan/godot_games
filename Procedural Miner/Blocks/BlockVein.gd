@@ -1,6 +1,6 @@
 extends Area2D
 
-export(int) var generate_amount = 8
+export(int) var generate_amount = 15
 
 onready var scn_block_factory = preload("res://Blocks/BlockFactory.tscn")
 

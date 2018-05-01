@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.png" type="Texture" id=2]
@@ -13,6 +13,11 @@ extents = Vector2( 32, 48 )
 
 custom_solver_bias = 0.0
 radius = 32.0
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 10 )
 
 [node name="Player" type="KinematicBody2D"]
 
@@ -67,8 +72,28 @@ _sections_unfolded = [ "Transform" ]
 
 shape = SubResource( 2 )
 
+[node name="GroundDetection" type="Area2D" parent="." index="4"]
+
+position = Vector2( 0, 40 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_mask = 1024
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundDetection" index="0"]
+
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
 [connection signal="area_entered" from="VeinDetection" to="." method="_on_VeinDetection_area_entered"]
 
 [connection signal="body_entered" from="VeinDetection" to="." method="_on_VeinDetection_body_entered"]
+
+[connection signal="body_entered" from="GroundDetection" to="." method="_on_GroundDetection_body_entered"]
 
 

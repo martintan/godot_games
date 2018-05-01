@@ -2,9 +2,8 @@ extends Node
 
 export var block_queue_size = 5
 
-enum Blocks { Stone }
-
 func _ready():
+	randomize()
 #	for block in get_children():
 #		block.visible = false
 	pass

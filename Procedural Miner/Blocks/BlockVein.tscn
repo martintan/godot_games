@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 radius = 100.0
 
-[node name="BlockVein" type="Area2D"]
+[node name="BlockVein" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )

@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TileMap/TileSet.tres" type="TileSet" id=1]
-[ext_resource path="res://TileMap/TileManager.gd" type="Script" id=2]
+[ext_resource path="res://TileMap/BackgroundTM.gd" type="Script" id=2]
 [ext_resource path="res://TileMap/TileSpawn.png" type="Texture" id=3]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://TileMap/LevelTM.gd" type="Script" id=4]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node" index="0"]
 
-[node name="TileMap" type="TileMap" parent="." index="0"]
+[node name="TileMaps" type="Node" parent="." index="0"]
+
+[node name="BackgroundTM" type="TileMap" parent="TileMaps" index="0"]
 
 mode = 0
 tile_set = ExtResource( 1 )
@@ -25,23 +28,44 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray(  )
+tile_data = PoolIntArray( 262144, 2, 0, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 2, 0, 262149, 2, 0, 262150, 2, 0, 262151, 2, 0, 262152, 2, 0, 262153, 2, 0, 262154, 2, 0, 262155, 2, 0, 262156, 2, 0, 262157, 2, 0, 262158, 2, 0, 262159, 2, 0 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Collision" ]
 procedural_spawn_size = Vector2( 10, 8 )
 max_row_width = 10
 
-[node name="TileSpawn" type="Sprite" parent="TileMap" index="0"]
+[node name="TileSpawn" type="Sprite" parent="TileMaps/BackgroundTM" index="0"]
 
 visible = false
-position = Vector2( 485, 285 )
+position = Vector2( 480, 288 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Offset", "Transform" ]
 
+[node name="LevelTM" type="TileMap" parent="TileMaps" index="1"]
+
+mode = 0
+tile_set = null
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+script = ExtResource( 4 )
+
 [node name="Blocks" type="Node" parent="." index="1"]
 
-[node name="Player" parent="." index="2" instance=ExtResource( 4 )]
+[node name="Player" parent="." index="2" instance=ExtResource( 5 )]
 
 position = Vector2( 480, 90 )
 scale = Vector2( 0.8, 0.8 )
@@ -73,5 +97,9 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+
+[node name="Levels" type="Node" parent="." index="3"]
+
+[node name="Dirt" type="Node" parent="Levels" index="0"]
 
 

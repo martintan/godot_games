@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://TileMap/Tiles/Dirt.png" type="Texture" id=1]
 [ext_resource path="res://Blocks/Stone.png" type="Texture" id=2]
 [ext_resource path="res://TileMap/Tiles/Grass.png" type="Texture" id=3]
+[ext_resource path="res://TileMap/Dirt.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -19,7 +20,7 @@ extents = Vector2( 32, 32 )
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="Dirt" type="Sprite" parent="." index="0"]
 
@@ -91,5 +92,12 @@ visible = false
 position = Vector2( 32, 32 )
 shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="DirtCaveBg" type="Sprite" parent="." index="3"]
+
+modulate = Color( 0.761719, 0.761719, 0.761719, 1 )
+position = Vector2( 0, 64 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 

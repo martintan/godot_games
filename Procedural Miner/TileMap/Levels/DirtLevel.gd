@@ -4,7 +4,7 @@ var block_types = [ GLOBAL.Blocks.DIRT, GLOBAL.Blocks.STONE ]
 
 func level_init():
 	self.max_height = 20
-	self.max_width = 10
+	self.max_width = 20
 	self.MAIN_BLOCK_TYPE = GLOBAL.Tiles.DIRT
 	self.last_pos = tilemap.map_to_world(Vector2(start_pos.x, start_pos.y + max_height))
 	

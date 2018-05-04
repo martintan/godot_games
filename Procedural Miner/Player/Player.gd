@@ -31,8 +31,9 @@ func _process(delta):
 		destroy_block(tools.get_child(2))
 	
 func destroy_block(node_tool):
+	if blocks_in_range.size() <= 0: return
 	var block = blocks_in_range[0]
-	if block != null and block.destroy(node_tool.name):
+	if block.destroy(node_tool.name):
 		blocks_in_range.pop_front()
 	
 func _physics_process(delta):

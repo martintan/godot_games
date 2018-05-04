@@ -21,6 +21,8 @@ var max_width = 10
 var player_depth = 0
 # store last block position in map coordinates
 var last_pos
+# store references to each block in list
+var block_vein = []
 
 # base init for assigning necessary references & other info
 func init(tilemap, factory, node_blocks_holder, start_pos):
@@ -52,6 +54,7 @@ func instance_block(BLOCK_TYPE, spawn_pos):
 	block.connect("destroyed", self, "on_block_destroyed")
 	block.add_to_group("Blocks")
 	node_blocks_holder.add_child(block)
+	block_vein.push_back(block)
 
 # signal: block is destroyed by player
 func on_block_destroyed():

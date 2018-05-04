@@ -9,12 +9,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 48 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 10 )
+extents = Vector2( 32, 80 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -53,7 +53,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="GroundDetection" type="Area2D" parent="." index="3"]
 
-position = Vector2( 0, 40 )
+position = Vector2( 0, 100 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -66,7 +66,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundDetection" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="body_entered" from="GroundDetection" to="." method="_on_GroundDetection_body_entered"]

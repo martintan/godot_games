@@ -3,8 +3,8 @@ extends TileMap
 """
 current level is like a state -> switched by level classes 
 	delegate update/procedural generations methods to the current level class
-
 """
+
 onready var node_blocks_holder = GLOBAL.root.get_node("Blocks")
 onready var block_factory = preload("res://Blocks/BlockFactory.tscn").instance()
 # Node2D that designates where the level should start generating
@@ -23,6 +23,8 @@ var player_prev_depth = 0
 var player_depth = 0
 # generate next level (margin) before level's max_height
 var level_margin = 3
+# generate next level after each y checkpoint
+var depth_checkpoint = 0
 
 func _ready():
 	GLOBAL.player.connect("on_ground", self, "on_player_grounded")
@@ -33,11 +35,13 @@ func generate_level(level_class, start_pos):
 	current_level.init(self, block_factory, node_blocks_holder, start_pos)
 	current_level.generate_surrounding_tiles()
 	current_level.generate_block_vein()
+	depth_checkpoint += current_level.max_height
+#	print(current_level.block_vein)
 		
 # update depth tracker when player falls to the ground
 func on_player_grounded():
-	player_depth += world_to_map(GLOBAL.player.depth).y - player_prev_depth
-	player_prev_depth = world_to_map(GLOBAL.player.depth).y
+	player_depth += world_to_map(GLOBAL.player.ground_pos).y - player_prev_depth
+	player_prev_depth = world_to_map(GLOBAL.player.ground_pos).y
 	
 	if not first_grounded: 
 		first_grounded = true
@@ -45,7 +49,7 @@ func on_player_grounded():
 		
 	# if player reaches end of current level depth
 	# todo: fix this if statement (max_height should be added to previous level height)
-	if player_depth >= current_level.max_height - level_margin:
+	if player_depth >= depth_checkpoint - level_margin:
 		level_start.position = current_level.last_pos + cell_size/2
 		generate_level(DirtLevel, world_to_map(level_start.position))
 #		populate_level_tiles(start_pos + Vector2(0, player_depth), level_index)

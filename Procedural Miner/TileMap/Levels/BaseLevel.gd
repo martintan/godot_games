@@ -27,6 +27,7 @@ var block_vein = []
 # base init for assigning necessary references & other info
 func init(tilemap, factory, node_blocks_holder, start_pos):
 	self.tilemap = tilemap
+	self.cell_size = tilemap.cell_size
 	self.factory = factory
 	self.start_pos = start_pos
 	self.node_blocks_holder = node_blocks_holder
@@ -57,6 +58,6 @@ func instance_block(BLOCK_TYPE, spawn_pos):
 	block_vein.push_back(block)
 
 # signal: block is destroyed by player
-func on_block_destroyed():
+func on_block_destroyed(node_block):
 	# default implementation
 	pass

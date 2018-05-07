@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/dirt tile - 100x100.png-117b7155c9a5c7f7076576585a0095b6.stex"
+
+[deps]
+
+source_file="res://Tiles/dirt tile - 100x100.png"
+source_md5="fb74a396e9f216b4dbeb2c90204b5791"
+
+dest_files=[ "res://.import/dirt tile - 100x100.png-117b7155c9a5c7f7076576585a0095b6.stex" ]
+dest_md5="0e1ecda6d7c1f1cb9bd401f76f0dbe3c"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

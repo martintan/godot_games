@@ -2,28 +2,27 @@
 
 [ext_resource path="res://Blocks/BlockFactory.gd" type="Script" id=1]
 [ext_resource path="res://Blocks/Dirt.gd" type="Script" id=2]
-[ext_resource path="res://Blocks/Dirt.png" type="Texture" id=3]
+[ext_resource path="res://Tiles/dirt tile - 100x100.png" type="Texture" id=3]
 [ext_resource path="res://Blocks/Stone.gd" type="Script" id=4]
-[ext_resource path="res://Blocks/Stone.png" type="Texture" id=5]
+[ext_resource path="res://Tiles/Stone.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
+extents = Vector2( 50, 50 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 32 )
+extents = Vector2( 50, 50 )
 
-[node name="BlockFactory" type="Node" index="0"]
+[node name="BlockFactory" type="Node"]
 
 script = ExtResource( 1 )
 block_queue_size = 5
 
 [node name="Dirt" type="StaticBody2D" parent="." index="0"]
 
-position = Vector2( 64, 0 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -38,17 +37,17 @@ _sections_unfolded = [ "Transform" ]
 
 texture = ExtResource( 3 )
 centered = false
-_sections_unfolded = [ "Offset" ]
+_sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dirt" index="1"]
 
-visible = false
-position = Vector2( 32, 32 )
+position = Vector2( 50, 50 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Stone" type="StaticBody2D" parent="." index="1"]
 
+position = Vector2( 100, 0 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -67,8 +66,7 @@ _sections_unfolded = [ "Offset" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stone" index="1"]
 
-visible = false
-position = Vector2( 32, 32 )
+position = Vector2( 50, 50 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 

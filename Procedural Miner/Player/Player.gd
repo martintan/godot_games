@@ -7,6 +7,7 @@ const floor_normal = Vector2(0, -1)
 
 onready var tools = $Tools
 onready var ground_check = $GroundDetection
+onready var anim_player = $AnimationPlayer
 
 var velocity = Vector2()
 var ground_pos setget, get_ground_pos
@@ -17,12 +18,14 @@ var blocks_in_range = []
 signal on_ground
 
 func _ready():
+	anim_player.play("idle")
 	pass
 	
 func _process(delta):
 #	print(velocity)
 	if Input.is_action_just_pressed("tool_1"):
 		destroy_block(tools.get_child(0))
+		anim_player.play("pickaxe_swing_fast", -1, 2)
 		
 	elif Input.is_action_just_pressed("tool_2"):
 		destroy_block(tools.get_child(1))

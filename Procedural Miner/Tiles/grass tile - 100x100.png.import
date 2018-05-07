@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/grass tile - 100x100.png-4b64dfc759562fddfc646b8f53239a55.stex"
+
+[deps]
+
+source_file="res://Tiles/grass tile - 100x100.png"
+source_md5="82cf59a51992e8eda547b50a3a1d8ebd"
+
+dest_files=[ "res://.import/grass tile - 100x100.png-4b64dfc759562fddfc646b8f53239a55.stex" ]
+dest_md5="d3e7da5e315cdea5bffcf637b082c1bf"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

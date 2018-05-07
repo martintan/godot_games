@@ -29,6 +29,6 @@ func generate_block_vein():
 		instance_block(RANDOM_BLOCK_TYPE, map_to_world(Vector2(start_pos.x, y)))
 
 # signal: block is destroyed by player
-func on_block_destroyed():
-	.on_block_destroyed()
+func on_block_destroyed(node_block):
+	.on_block_destroyed(node_block)
 	

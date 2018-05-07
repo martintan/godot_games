@@ -22,7 +22,7 @@ var first_grounded = false
 var player_prev_depth = 0
 var player_depth = 0
 # generate next level (margin) before level's max_height
-var level_margin = 3
+var level_margin = 5
 # generate next level after each y checkpoint
 var depth_checkpoint = 0
 
@@ -42,7 +42,7 @@ func generate_level(level_class, start_pos):
 func generate_structure(STRUCTURE_TYPE, start_pos):
 	print("Player: ", world_to_map(GLOBAL.player.position), " start_pos: ", start_pos)
 	# load structure and get array of tile positions
-	var structure = load("res://Structures/Structures.tscn").instance().get_child(STRUCTURE_TYPE).duplicate()
+	var structure = load("res://TileMap/Structures.tscn").instance().get_child(STRUCTURE_TYPE).duplicate()
 	var cells = structure.get_used_cells()
 	# get random position in current_level - level_margin
 	var rand_pos = Vector2(round( rand_range(start_pos.x - current_level.max_width - level_margin, start_pos.x)), round( rand_range(start_pos.y, start_pos.y + current_level.max_height - level_margin)))

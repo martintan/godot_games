@@ -9,7 +9,7 @@ func _ready():
 	pass
 	
 func get_random_block():
-	return get_child( floor(rand_range(0, get_child_count())) ).duplicate()
+	return get_child( floor(rand_range(0, get_child_count()-1)) ).duplicate()
 	
 func get_block(BLOCK_TYPE):
 	return get_child(BLOCK_TYPE).duplicate()

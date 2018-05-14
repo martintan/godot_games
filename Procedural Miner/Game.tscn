@@ -160,7 +160,7 @@ scale = Vector2( 1.25, 1.25 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 5, 5 )
+zoom = Vector2( 2, 2 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
@@ -182,6 +182,7 @@ editor_draw_drag_margin = false
 
 [node name="SkyBG" type="Sprite" parent="Player" index="5"]
 
+visible = false
 position = Vector2( 0, -62.5 )
 scale = Vector2( 6.25, 6.25 )
 z_index = -1
